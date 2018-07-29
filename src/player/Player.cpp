@@ -1,0 +1,5 @@
+#include <cstring>
+
+Player::Player() {
+
+}

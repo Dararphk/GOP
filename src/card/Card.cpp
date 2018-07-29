@@ -1,0 +1,5 @@
+#include <cstring>
+
+Card::Card() {
+
+}

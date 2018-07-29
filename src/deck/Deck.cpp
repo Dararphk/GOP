@@ -1,0 +1,5 @@
+#include <cstring>
+
+Deck::Deck() {
+
+}
