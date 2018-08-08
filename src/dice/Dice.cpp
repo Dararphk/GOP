@@ -12,13 +12,9 @@ Dice::Dice() {
 Dice::throwDice() {
     die1 = rand() % 6 + 1;
     die2 = rand() % 6 + 1;
-    if (die1 == die2)
-        double = true;
-    else
-        double = false;
     return die1 + die2;
 }
 
 Dice::isDouble() {
-    return double;
+    return die1 == die2;
 }
