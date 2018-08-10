@@ -1,12 +1,13 @@
-#include <String>
+#include <string>
+
+using namespace std;
 
 class Player {
-    String name;
+    string name;
     int position;
     int score;
 public:
-    Player(String name);
-    int getScore();
+    Player(string name);
     int getPosition();
     void move(int position);
-}
+};

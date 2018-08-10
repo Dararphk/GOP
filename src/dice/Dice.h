@@ -4,4 +4,4 @@ public:
     Dice();
     int throwDice();
     bool isDouble();
-}
+};

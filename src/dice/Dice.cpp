@@ -9,12 +9,12 @@ Dice::Dice() {
     srand(time(0));
 }
 
-Dice::throwDice() {
+int Dice::throwDice() {
     die1 = rand() % 6 + 1;
     die2 = rand() % 6 + 1;
     return die1 + die2;
 }
 
-Dice::isDouble() {
+bool Dice::isDouble() {
     return die1 == die2;
 }

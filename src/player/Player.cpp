@@ -1,19 +1,18 @@
 #include "Player.h"
 
-Player::Player(String name) {
-    this.name = name;
-    this.position = 0;
-    this.score = 0;
+#include <string>
+
+using namespace std;
+
+Player::Player(string name) {
+    this->name = name;
+    this->position = 0;
 }
 
-Player::getScore() {
-    return score;
-}
-
-Player::getPosition() {
+int Player::getPosition() {
     return position;
 }
 
-Player::move(int position) {
-    this.position = position;
+void Player::move(int position) {
+    this->position = position;
 }
