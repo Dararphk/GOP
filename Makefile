@@ -1,5 +1,5 @@
-main: main.o Card.o Deck.o Dice.o Game.o Player.o
-	g++ -o main main.o Card.o Deck.o Dice.o Game.o Player.o
+GOP: main.o Card.o Deck.o Dice.o Game.o Player.o
+	g++ -o GOP main.o Card.o Deck.o Dice.o Game.o Player.o
 main.o: main.cpp
 	g++ -c main.cpp
 Card.o:
@@ -13,4 +13,4 @@ Game.o:
 Player.o:
 	g++ -c src/player/Player.cpp
 clean:
-	rm -f *.o main
+	rm -f *.o GOP
