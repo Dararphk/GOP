@@ -5,9 +5,10 @@ using namespace std;
 class Player {
     string name;
     int position;
-    int score;
 public:
     Player(string name);
+    string getName();
     int getPosition();
     void move(int position);
+    int throwDice();
 };
