@@ -1,5 +1,8 @@
 #include "Square.h"
-#include "../game/Game.cpp"
+
+#include <string>
+
+using namespace std;
 
 const int squareTypes = 6;
 
@@ -58,13 +61,13 @@ void Square::activate(Player *p) {
             break;
         case 2:
             //how to link it?
-            throwDice();
+            p->throwDice();
             break;
         case 3:
-            p->move(p->getPosition() + val[0]);
+            p->move(val[0]);
             break;
         case 4:
-            p->move(val[0]);
+            p->setPosition(val[0]);
             break;
         case 5:
             //dovrebbe essere la casella indovina una domanda

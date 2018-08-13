@@ -5,9 +5,10 @@
 
 using namespace std;
 
-Player::Player(string name) {
+Player::Player(string name, int l) {
     this->name = name;
-    this->position = 0;
+    this->setPosition(0);
+    this->bounds = l;
 }
 
 string Player::getName() {
@@ -18,10 +19,20 @@ int Player::getPosition() {
     return position;
 }
 
-void Player::move(int position) {
+void Player::setPosition(int position) {
     this->position = position;
 }
 
-int Player::throwDice() {
+void Player::move(int i) {
+    int tmp = this->position + i;
+    if (tmp >= this->bounds)
+        this->position = this->bounds - (tmp - this->bounds) - 2;
+    else
+        this->position = tmp;
+}
 
+void Player::throwDice() {
+    //put output messagge
+    int dice = (rand() % 6 + 1) + (rand() % 6 + 1);
+    this->move(dice);
 }

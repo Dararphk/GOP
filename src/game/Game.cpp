@@ -1,7 +1,6 @@
 #include "Game.h"
 
 #include <ctime>
-#include <string>
 #include <iostream>
 
 using namespace std;
@@ -13,8 +12,7 @@ const int MAX_SQUARES = 100;
 
 Game::Game() {
     srand(time(0));
-    playerInput(MIN_PLAYERS, MAX_PLAYERS);
-    initBoard(MIN_SQUARES, MAX_SQUARES);
+    playerInput(MIN_PLAYERS, MAX_PLAYERS, initBoard(MIN_SQUARES, MAX_SQUARES);
     gameLoop();
 }
 
@@ -22,7 +20,7 @@ void Game::gameLoop() {
     return;
 }
 
-void Game::playerInput(const int minp, const int maxp) {
+void Game::playerInput(const int minp, const int maxp, int l) {
 
     do {
         cout << "How many players? [" << minp << "-" << maxp << "]" << endl;
@@ -33,12 +31,12 @@ void Game::playerInput(const int minp, const int maxp) {
     for (int i = 0; i < n; i++) {
         cout << "Player " << i << " name: ";
         cin >> tmpName;
-        players[i] = new Player(tmpName);
+        players[i] = new Player(tmpName, l);
     }
 
 }
 
-void Game::initBoard(const int mins, const int maxs) {
+int Game::initBoard(const int mins, const int maxs) {
     l = (rand() % (maxs - mins + 1)) + maxs;
 
     board[0] = new Square("Start");
@@ -46,4 +44,5 @@ void Game::initBoard(const int mins, const int maxs) {
         board[i] = new Square(rand(), l);
     }
     board[l - 1] = new Square("Finish");
+    return l;
 }
