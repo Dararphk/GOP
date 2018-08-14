@@ -7,7 +7,7 @@ class Player {
     int position;
     int bounds;
 public:
-    Player(string name);
+    Player(string name, int l);
     string getName();
     int getPosition();
     void setPosition(int position);

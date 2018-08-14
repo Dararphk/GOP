@@ -7,10 +7,12 @@ using namespace std;
 class Square {
     string msg;
     int id;
-    int val[5];
-    void randomize(int r, int l);
+    int pos;
+    int val;
+    void randomize(int l);
 public:
-    Square(string s);
-    Square(int r, int l);
+    Square(string msg, int pos);
+    Square(int r_id, int pos, int l);
     void activate(Player *p);
+    string print();
 };

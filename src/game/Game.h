@@ -1,4 +1,3 @@
-#include "../player/Player.h"
 #include "../square/Square.h"
 
 #include <string>
@@ -15,4 +14,5 @@ class Game {
     int initBoard(const int mins, const int maxs);
 public:
     Game();
+    void print(Square *board[100], int l);
 };
