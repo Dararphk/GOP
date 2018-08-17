@@ -13,6 +13,7 @@ const int MAX_SQUARES = 100;
 Game::Game() {
     srand(time(0));
     playerInput(MIN_PLAYERS, MAX_PLAYERS, initBoard(MIN_SQUARES, MAX_SQUARES));
+    initDeck();
     gameLoop();
 }
 
@@ -46,6 +47,10 @@ int Game::initBoard(const int mins, const int maxs) {
     }
     board[l - 1] = new Square("Finish", l - 1);
     return l;
+}
+
+void Game::initDeck(){
+  deck->Deck();
 }
 
 //(!!!) metodo farlocco, cancellare

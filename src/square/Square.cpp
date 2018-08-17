@@ -64,7 +64,7 @@ void Square::randomize(int l) {
     }
 }
 
-void Square::activate(Player *p) {
+void Square::activate(Player *p, Deck deck) {
     switch (this->id) {
         case 0:
             break;
@@ -79,7 +79,7 @@ void Square::activate(Player *p) {
             p->setPosition(val);
             break;
         case 4:
-            //dovrebbe essere la casella pesca una carta
+            p->drawCard(deck);
             break;
         case 5:
             //dovrebbe essere la casella indovina una domanda
