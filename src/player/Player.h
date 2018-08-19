@@ -11,6 +11,6 @@ public:
     string getName();
     int getPosition();
     void setPosition(int position);
-    void move(int i);
-    void throwDice();
+    int move(int i);
+    int throwDice();
 };

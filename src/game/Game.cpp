@@ -12,13 +12,30 @@ const int MAX_SQUARES = 100;
 
 Game::Game() {
     srand(time(0));
+
     playerInput(MIN_PLAYERS, MAX_PLAYERS, initBoard(MIN_SQUARES, MAX_SQUARES));
-    gameLoop();
+
+    bool gameFinished = false;
+    int i = 0;
+    int turni = 0;
+    while (!gameFinished) {
+        turni++;
+        //(!!!) correggere con versione migliore
+        cout << "Turno numero: " + to_string(turni) << endl;
+        if (i >= n)
+            i = 0;
+        gameFinished = this->gameLoop(players[i]);
+        i++;
+    }
+    i--;
+    cout << "Il giocatore " << players[i]->getName() << " ha vinto. Congratulazioni!\n";
 }
 
-void Game::gameLoop() {
+bool Game::gameLoop(Player *p) {
+    //number of turn ++
     this->print(board, l);
-    return;
+    //players[i] throws dice and advances, while finding out effect of the card
+    return board[p->throwDice()]->activate(p);
 }
 
 void Game::playerInput(const int minp, const int maxp, int l) {

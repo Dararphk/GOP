@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -23,16 +24,19 @@ void Player::setPosition(int position) {
     this->position = position;
 }
 
-void Player::move(int i) {
+int Player::move(int i) {
     int tmp = this->position + i;
     if (tmp >= this->bounds)
-        this->position = this->bounds - (tmp - this->bounds) - 2;
-    else
-        this->position = tmp;
+        tmp = this->bounds - (tmp - this->bounds) - 2;
+    cout << getName() << " si muove nella casella " << to_string(tmp) << endl;
+    this->position = tmp;
+    return this->position;
 }
 
-void Player::throwDice() {
+int Player::throwDice() {
     //put output messagge
+    cout << this->getName() << " tira ";
     int dice = (rand() % 6 + 1) + (rand() % 6 + 1);
-    this->move(dice);
+    cout << to_string(dice) << endl;
+    return this->move(dice);
 }

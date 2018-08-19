@@ -13,6 +13,6 @@ class Square {
 public:
     Square(string msg, int pos);
     Square(int r_id, int pos, int l);
-    void activate(Player *p);
+    bool activate(Player *p);
     string print();
 };

@@ -64,27 +64,33 @@ void Square::randomize(int l) {
     }
 }
 
-void Square::activate(Player *p) {
-    switch (this->id) {
-        case 0:
-            break;
-        case 1:
-            //how to link it?
-            p->throwDice();
-            break;
-        case 2:
-            p->move(val);
-            break;
-        case 3:
-            p->setPosition(val);
-            break;
-        case 4:
-            //dovrebbe essere la casella pesca una carta
-            break;
-        case 5:
-            //dovrebbe essere la casella indovina una domanda
-            break;
+bool Square::activate(Player *p) {
+    bool tmp = false;
+    if (this->msg == "Finish")
+        tmp = true;
+    else {
+        switch (this->id) {
+            case 0:
+                break;
+            case 1:
+                //how to link it?
+                p->throwDice();
+                break;
+            case 2:
+                p->move(val);
+                break;
+            case 3:
+                p->setPosition(val);
+                break;
+            case 4:
+                //dovrebbe essere la casella pesca una carta
+                break;
+            case 5:
+                //dovrebbe essere la casella indovina una domanda
+                break;
+        }
     }
+    return tmp;
 }
 
 string Square::print() {

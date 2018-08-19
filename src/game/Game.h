@@ -9,7 +9,7 @@ class Game {
     int l; //length of the board
     Player *players[10];
     Square *board[100];
-    void gameLoop();
+    bool gameLoop(Player *p);
     void playerInput(const int minp, const int maxp, int l);
     int initBoard(const int mins, const int maxs);
 public:
