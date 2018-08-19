@@ -33,13 +33,13 @@ void Square::randomize(int l) {
 
             do {
                 //(!!! correggere il range: cosa succede se i basso e rand alto?)
-                int l_r = rand() % 12 - 12;
-                int r_r = rand() % 12 + 1;
+                int l_r = rand() % 12 - 12; //left range
+                int r_r = rand() % 12 + 1; //right range
                 //correzione del range del random
-                if (this->pos - l_r <= 0) {
-                    l_r = l_r - (l_r - pos);
-                } else if (this->pos + r_r >= l - 1) {
-                    r_r = r_r - (r_r - pos);
+                if (this->pos + l_r <= 0) {
+                    l_r = - this->pos;
+                } else if (this->pos + r_r > l - 1) {
+                    r_r = (l - 1) - this->pos;
                 }
                 this->val = (rand() % (r_r - l_r)) + l_r;
             } while (this->val == 0);

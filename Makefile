@@ -2,15 +2,15 @@ GOP: main.o Card.o Deck.o Game.o Player.o Square.o
 	g++ -o GOP main.o Card.o Deck.o Game.o Player.o Square.o
 main.o: main.cpp
 	g++ -c main.cpp
-Card.o:
+Card.o: src/card/Card.cpp
 	g++ -c src/card/Card.cpp
-Deck.o:
+Deck.o: src/deck/Deck.cpp
 	g++ -c src/deck/Deck.cpp
-Game.o:
+Game.o: src/game/Game.cpp
 	g++ -c src/game/Game.cpp
-Player.o:
+Player.o: src/player/Player.cpp
 	g++ -c src/player/Player.cpp
-Square.o:
+Square.o: src/square/Square.cpp
 	g++ -c src/square/Square.cpp
 clean:
 	rm -f *.o GOP
