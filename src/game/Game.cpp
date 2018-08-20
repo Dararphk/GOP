@@ -9,12 +9,17 @@ const int MIN_PLAYERS = 1;
 const int MAX_PLAYERS = 4;
 const int MIN_SQUARES = 40;
 const int MAX_SQUARES = 100;
+const int MIN_CARDS = 40;
+const int MAX_CARDS = 100;
 
 Game::Game() {
     srand(time(0));
 
     playerInput(MIN_PLAYERS, MAX_PLAYERS, initBoard(MIN_SQUARES, MAX_SQUARES));
 
+    initDeck(MIN_CARDS, MAX_CARDS);
+
+    //(!!!) eliminare controllo esterno ciclo
     bool gameFinished = false;
     int i = 0;
     int turni = 0;
@@ -24,18 +29,22 @@ Game::Game() {
         cout << "Turno numero: " + to_string(turni) << endl;
         if (i >= n)
             i = 0;
-        gameFinished = this->gameLoop(players[i]);
+        gameLoop(players[i]);
+        gameFinished = players[i]->getPosition() == l - 1;
         i++;
     }
     i--;
     cout << "Il giocatore " << players[i]->getName() << " ha vinto. Congratulazioni!\n";
 }
 
-bool Game::gameLoop(Player *p) {
-    //number of turn ++
+void Game::gameLoop(Player *p) {
+    bool sameTurn;
     this->print(board, l);
     //players[i] throws dice and advances, while finding out effect of the card
-    return board[p->throwDice()]->activate(p);
+    p->throwDice();
+    do {
+        sameTurn = board[p->getPosition()]->activate(p, deck);
+    } while (sameTurn);
 }
 
 void Game::playerInput(const int minp, const int maxp, int l) {
@@ -63,6 +72,16 @@ int Game::initBoard(const int mins, const int maxs) {
     }
     board[l - 1] = new Square("Finish", l - 1);
     return l;
+}
+
+void Game::initDeck(const int minc, const int maxc) {
+    int tmp = (rand() % (maxc - minc + 1)) + minc;
+
+    deck = new Deck();
+
+    for (int i = 0; i < tmp; i++) {
+        deck->addCard(rand());
+    }
 }
 
 //(!!!) metodo farlocco, cancellare

@@ -1,4 +1,4 @@
-#include "../player/Player.h"
+#include "../deck/Deck.h"
 
 #include <string>
 
@@ -13,6 +13,6 @@ class Square {
 public:
     Square(string msg, int pos);
     Square(int r_id, int pos, int l);
-    bool activate(Player *p);
+    bool activate(Player *p, Deck *d);
     string print();
 };
