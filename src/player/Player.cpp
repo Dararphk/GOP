@@ -35,6 +35,8 @@ int Player::move(int i) {
     int tmp = this->position + i;
     if (tmp >= this->bounds)
         tmp = this->bounds - (tmp - this->bounds) - 2;
+    if (tmp < 0)
+        tmp = 0;
     this->setPosition(tmp);
     return this->position;
 }

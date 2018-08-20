@@ -85,7 +85,8 @@ bool Square::activate(Player *p, Deck *d) {
             tmp = d->drawCard().activate(p);
             break;
         case 5:
-            //dovrebbe essere la casella indovina una domanda
+            Question q = new Question(rand());
+            tmp = q->answer(p);
             break;
     }
     return tmp;
