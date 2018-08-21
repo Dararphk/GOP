@@ -3,6 +3,8 @@
 #include <ctime>
 #include <iostream>
 
+#define clear() printf("\033[H\033[J")
+
 using namespace std;
 
 const int MIN_PLAYERS = 1;
@@ -24,6 +26,7 @@ Game::Game() {
     int i = 0;
     int turni = 0;
     while (!gameFinished) {
+        clear();
         turni++;
         //(!!!) correggere con versione migliore
         cout << "Turno numero: " + to_string(turni) << endl;
@@ -42,6 +45,7 @@ void Game::gameLoop(Player *p) {
     this->print(board, l);
     //players[i] throws dice and advances, while finding out effect of the card
     p->throwDice();
+    //(!!!) BUG REPORT: infinite loop possibile if squares random values are not controlled.
     do {
         sameTurn = board[p->getPosition()]->activate(p, deck);
     } while (sameTurn);
@@ -64,7 +68,7 @@ void Game::playerInput(const int minp, const int maxp, int l) {
 }
 
 int Game::initBoard(const int mins, const int maxs) {
-    l = (rand() % (maxs - mins + 1)) + mins;
+    l = ((rand() % (maxs - mins + 1)) / 3) * 3 + mins - 1;
 
     board[0] = new Square("Start", 0);
     for (int i = 1; i < l - 1; i++) {

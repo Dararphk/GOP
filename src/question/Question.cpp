@@ -1,11 +1,11 @@
 #include "Question.h"
 
-#include <ctime>
+#include <string>
 #include <iostream>
 
 using namespace std;
 
-const int questionTypes = 15;
+const int questionTypes = 1;
 
 Question::Question(int r_id){
     this->id = r_id % questionTypes;
@@ -13,14 +13,14 @@ Question::Question(int r_id){
 }
 
 void Question::randomize() {
-    this->q = "";
-
-    for (int i = 0; i < 4; i++) {
-        answers[i] = "";
-    }
 
     this->correctAnswer = -1;
 
+    /*
+    ** (!!!) mancano tutte le domande, possibile veloce
+    ** implementazione delle stesse tramite template su
+    ** excel, convertito poi in testo con spaziatura nulla
+    */
     switch (this->id) {
         case 0:
             this->q = "Chi è il primogenito di Lord Gwyn?";
@@ -36,7 +36,7 @@ void Question::randomize() {
 bool Question::answer(Player *p)
 {
     int a=-1;
-    cout << this->q+"\n";
+    cout << this->q << endl;
     for (int i = 0; i < 4; i++) {
       cout << to_string(i) << " - " << answers[i] << "\n";
     }
@@ -44,10 +44,7 @@ bool Question::answer(Player *p)
     cin >> a;
     if (a==correctAnswer) {
       p->move(2);
+      return true;
     }
-    else
-    {
-      p->move(-2);
-    }
-    return true;
+    return false;
 }

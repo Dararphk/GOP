@@ -85,7 +85,9 @@ bool Square::activate(Player *p, Deck *d) {
             tmp = d->drawCard().activate(p);
             break;
         case 5:
-            Question q = new Question(rand());
+            //(!!!) attenzione, 1 messo come argomento solo per testing, ripristinare commento e cancellare riga sotto ad esso
+            //Question *q = new Question(rand());
+            Question *q = new Question(1);
             tmp = q->answer(p);
             break;
     }
