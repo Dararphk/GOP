@@ -1,6 +1,7 @@
 #include "Card.h"
 
 #include <stdlib.h>
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -59,6 +60,8 @@ void Card::randomize() {
 }
 
 bool Card::activate(Player *p) {
+    cout << p->getName() << " pesca una carta dal mazzo.\n";
+    cout << this->name << " \"" << this->desc << "\"\n";
     bool tmp = false;
     switch (this->id) {
         case 0:

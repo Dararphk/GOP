@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -33,18 +34,20 @@ void Question::randomize() {
     }
 }
 
-bool Question::answer(Player *p)
-{
+bool Question::answer(Player *p) {
     int a=-1;
     cout << this->q << endl;
     for (int i = 0; i < 4; i++) {
-      cout << to_string(i) << " - " << answers[i] << "\n";
+        cout << to_string(i) << " - " << answers[i] << "\n";
     }
     cout << "Numero risposta: ";
     cin >> a;
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
     if (a==correctAnswer) {
-      p->move(2);
-      return true;
+        cout << "Risposta esatta! " << p->getName() << " va avanti di 2\n";
+        p->move(2);
+        return true;
     }
+    cout << "Risposta errata.\n";
     return false;
 }

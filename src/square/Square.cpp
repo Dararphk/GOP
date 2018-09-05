@@ -29,6 +29,7 @@ void Square::randomize(int l) {
             this->msg = "Tira un'altra volta";
             break;
         case 2:
+            //(!!!) attenzione, possibili bug se si va indietro di 2 su casella di tipo domanda o con vai avanti di / vai nella casella se si chiude il ciclo, controllare prima di creare
             this->msg = "Vai ";
 
             do {
@@ -52,7 +53,9 @@ void Square::randomize(int l) {
             this->msg += "di " + to_string(abs(this->val));
             break;
         case 3:
-            this->val = (rand() % (l / 2)) + (l / 2);
+            do {
+                this->val = (rand() % (l / 2)) + (l / 2);
+            } while (this->val == this->pos);
             this->msg = "Vai alla casella " + to_string(val);
             break;
         case 4:

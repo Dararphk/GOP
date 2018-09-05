@@ -1,7 +1,9 @@
 #include "Game.h"
 
 #include <ctime>
+#include <cstdlib>
 #include <iostream>
+#include <limits>
 
 #define clear() printf("\033[H\033[J")
 
@@ -23,21 +25,24 @@ Game::Game() {
 
     //(!!!) eliminare controllo esterno ciclo
     bool gameFinished = false;
-    int i = 0;
+    int i = -1;
     int turni = 0;
     while (!gameFinished) {
         clear();
         turni++;
         //(!!!) correggere con versione migliore
         cout << "Turno numero: " + to_string(turni) << endl;
+        i++;
         if (i >= n)
             i = 0;
         gameLoop(players[i]);
         gameFinished = players[i]->getPosition() == l - 1;
-        i++;
+        if (!gameFinished) {
+            cout << "Turno terminato. Premere Invio per continuare . . .";
+            cin.get();
+        }
     }
-    i--;
-    cout << "Il giocatore " << players[i]->getName() << " ha vinto. Congratulazioni!\n";
+    cout << players[i]->getName() << " ha vinto. Congratulazioni!\n";
 }
 
 void Game::gameLoop(Player *p) {
@@ -62,6 +67,7 @@ void Game::playerInput(const int minp, const int maxp, int l) {
     for (int i = 0; i < n; i++) {
         cout << "Player " << i << " name: ";
         cin >> tmpName;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         players[i] = new Player(tmpName, l);
     }
 

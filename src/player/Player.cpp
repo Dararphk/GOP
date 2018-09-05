@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cstdlib>
+#include <stdlib.h>
 #include <iostream>
 
 using namespace std;
@@ -42,11 +43,17 @@ int Player::move(int i) {
 }
 
 int Player::throwDice() {
-    //put output messagge
+    //(!!!) put output messagge
+    int tmp;
     cout << this->getName() << " tira ";
     int dice = (rand() % 6 + 1) + (rand() % 6 + 1);
-    cout << to_string(dice) << endl;
-    dice += this->applyStats();
+    cout << to_string(dice);
+    tmp = this->applyStats();
+    if (tmp != 0) {
+        dice += tmp;
+        cout << " = " << dice;
+    }
+    cout << endl;
     return this->move(dice);
 }
 
@@ -58,6 +65,13 @@ int Player::applyStats() {
         tmp += -3;
     if (this->bonuses[2])
         tmp += 5;
+    if (tmp != 0) {
+        if (tmp > 0)
+            cout << " + ";
+        else
+            cout << " - ";
+        cout << abs(tmp);
+    }
     return tmp;
 }
 
