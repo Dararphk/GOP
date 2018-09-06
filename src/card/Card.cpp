@@ -13,6 +13,7 @@ Card::Card(string s) {
         this->id = 7;
     else
         this->id = 6;
+    this->randomize(); //(!!!) last card didn't get name and desc
 }
 
 Card::Card(int r_id) {
@@ -75,7 +76,7 @@ bool Card::activate(Player *p) {
             p->activateBonus(0);
             break;
         case 3:
-            p->setPosition(p->getBounds()/2); //eventualità dispari da aggiungere
+            p->setPosition(p->getBounds()/2);
             tmp = true;
             break;
         case 4:

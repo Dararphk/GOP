@@ -13,13 +13,13 @@ Square::Square(string msg, int pos) {
     this->pos = pos;
 }
 
-Square::Square(int r_id, int pos, int l) {
+Square::Square(int r_id, Square *board[], int pos, int l) {
     this->id = r_id % squareTypes;
     this->pos = pos;
-    this->randomize(l);
+    this->randomize(board, l);
 }
 
-void Square::randomize(int l) {
+void Square::randomize(Square *board[], int l) {
     this->msg = "";
     switch (this->id) {
         case 0:
@@ -43,7 +43,7 @@ void Square::randomize(int l) {
                     r_r = (l - 1) - this->pos;
                 }
                 this->val = (rand() % (r_r - l_r)) + l_r;
-            } while (this->val == 0);
+            } while (this->val == 0 || checkLoop(board));
 
             if (val > 0)
                 this->msg += "avanti ";
@@ -55,7 +55,7 @@ void Square::randomize(int l) {
         case 3:
             do {
                 this->val = (rand() % (l / 2)) + (l / 2);
-            } while (this->val == this->pos);
+            } while (this->val == this->pos || checkLoop(board));
             this->msg = "Vai alla casella " + to_string(val);
             break;
         case 4:
@@ -94,6 +94,33 @@ bool Square::activate(Player *p, Deck *d) {
             tmp = q->answer(p);
             break;
     }
+    return tmp;
+}
+
+bool Square::checkLoop(Square *board[]) {
+    bool tmp = false;
+    int index;
+
+    switch (this->id) {
+        case 2:
+            index = this->pos + this->val;
+            break;
+        case 3:
+            index = this->val;
+            break;
+    }
+
+    if (index < this->pos)
+        switch (board[index]->id) {
+            case 2:
+                if (board[index]->val + index == this->pos)
+                    tmp = true;
+                break;
+            case 3:
+                if (board[index]->val == this->pos)
+                    tmp = true;
+                break;
+        }
     return tmp;
 }
 

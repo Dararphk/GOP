@@ -16,5 +16,5 @@ class Game {
     void initDeck(const int minc, const int maxc);
 public:
     Game();
-    void print(Square *board[100], int l);
+    void print(Square *board[], int l);
 };

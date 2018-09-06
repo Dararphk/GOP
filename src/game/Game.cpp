@@ -18,9 +18,7 @@ const int MAX_CARDS = 100;
 
 Game::Game() {
     srand(time(0));
-
     playerInput(MIN_PLAYERS, MAX_PLAYERS, initBoard(MIN_SQUARES, MAX_SQUARES));
-
     initDeck(MIN_CARDS, MAX_CARDS);
 
     //(!!!) eliminare controllo esterno ciclo
@@ -74,11 +72,11 @@ void Game::playerInput(const int minp, const int maxp, int l) {
 }
 
 int Game::initBoard(const int mins, const int maxs) {
-    l = ((rand() % (maxs - mins + 1)) / 3) * 3 + mins - 1;
+    this->l = ((rand() % (maxs - mins + 1)) / 3) * 3 + mins - 1;
 
     board[0] = new Square("Start", 0);
     for (int i = 1; i < l - 1; i++) {
-        board[i] = new Square(rand(), i, l);
+        board[i] = new Square(rand(), board, i, l);
     }
     board[l - 1] = new Square("Finish", l - 1);
     return l;
@@ -95,7 +93,7 @@ void Game::initDeck(const int minc, const int maxc) {
 }
 
 //(!!!) metodo farlocco, cancellare
-void Game::print(Square *board[100], int l) {
+void Game::print(Square *board[], int l) {
     //(!!!) controllare che tutte le caselle vengano stampate, correggere calcolo
     for (int i = 0; i < l / 3; i++)
         cout << board[i]->print() << board[i+(l/3)]->print() << board[i+(l/3)*2]->print() << endl;

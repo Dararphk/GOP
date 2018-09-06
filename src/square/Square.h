@@ -9,10 +9,11 @@ class Square {
     int id;
     int pos;
     int val;
-    void randomize(int l);
+    void randomize(Square *board[], int l);
+    bool checkLoop(Square *board[]);
 public:
     Square(string msg, int pos);
-    Square(int r_id, int pos, int l);
+    Square(int r_id, Square *board[], int pos, int l);
     bool activate(Player *p, Deck *d);
     string print();
 };
