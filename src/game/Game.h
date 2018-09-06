@@ -5,6 +5,7 @@
 using namespace std;
 
 class Game {
+    int c; //n° of columns
     int n; //n° of players
     int l; //length of the board
     Player *players[10];
@@ -14,6 +15,7 @@ class Game {
     void playerInput(const int minp, const int maxp, int l);
     int initBoard(const int mins, const int maxs);
     void initDeck(const int minc, const int maxc);
+    void setPrint();
 public:
     Game();
     void print(Square *board[], int l);

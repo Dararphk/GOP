@@ -15,9 +15,11 @@ const int MIN_SQUARES = 40;
 const int MAX_SQUARES = 100;
 const int MIN_CARDS = 40;
 const int MAX_CARDS = 100;
+const int MAX_SQUARE_LENGTH = 30;
 
 Game::Game() {
     srand(time(0));
+    setPrint();
     playerInput(MIN_PLAYERS, MAX_PLAYERS, initBoard(MIN_SQUARES, MAX_SQUARES));
     initDeck(MIN_CARDS, MAX_CARDS);
 
@@ -29,7 +31,7 @@ Game::Game() {
         clear();
         turni++;
         //(!!!) correggere con versione migliore
-        cout << "Turno numero: " + to_string(turni) << endl;
+        cout << "Turno numero: " + to_string(turni) << endl << endl;
         i++;
         if (i >= n)
             i = 0;
@@ -48,7 +50,6 @@ void Game::gameLoop(Player *p) {
     this->print(board, l);
     //players[i] throws dice and advances, while finding out effect of the card
     p->throwDice();
-    //(!!!) BUG REPORT: infinite loop possibile if squares random values are not controlled.
     do {
         sameTurn = board[p->getPosition()]->activate(p, deck);
     } while (sameTurn);
@@ -57,13 +58,13 @@ void Game::gameLoop(Player *p) {
 void Game::playerInput(const int minp, const int maxp, int l) {
 
     do {
-        cout << "How many players? [" << minp << "-" << maxp << "]" << endl;
+        cout << "Quanti giocatori? [" << minp << "-" << maxp << "]" << endl;
         cin >> n;
     } while (n < minp && n > maxp);
 
     string tmpName;
     for (int i = 0; i < n; i++) {
-        cout << "Player " << i << " name: ";
+        cout << "Nome del giocatore " << i << ": ";
         cin >> tmpName;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         players[i] = new Player(tmpName, l);
@@ -72,7 +73,7 @@ void Game::playerInput(const int minp, const int maxp, int l) {
 }
 
 int Game::initBoard(const int mins, const int maxs) {
-    this->l = ((rand() % (maxs - mins + 1)) / 3) * 3 + mins - 1;
+    this->l = (rand() % (maxs - mins + 1)) + mins - 1;
 
     board[0] = new Square("Start", 0);
     for (int i = 1; i < l - 1; i++) {
@@ -92,9 +93,41 @@ void Game::initDeck(const int minc, const int maxc) {
     }
 }
 
-//(!!!) metodo farlocco, cancellare
 void Game::print(Square *board[], int l) {
-    //(!!!) controllare che tutte le caselle vengano stampate, correggere calcolo
-    for (int i = 0; i < l / 3; i++)
-        cout << board[i]->print() << board[i+(l/3)]->print() << board[i+(l/3)*2]->print() << endl;
+    string tmp;
+    int index, max;
+    int rows = l / c;
+    if (l % c > 0)
+        rows++;
+    for (int i = 0; i < rows; i++) {
+        for (int j  = 0; j < c; j++) {
+            index = i + rows * j;
+            if (index < l) {
+                if (index < 10)
+                    cout << " ";
+                cout << index << " - "; // (!!!) missing player print
+                tmp = board[i + rows * j]->getMsg();
+                max = MAX_SQUARE_LENGTH - tmp.length();
+                for (int k = 0; k < max; k++)
+                    tmp += " ";
+                cout << tmp;
+            }
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+void Game::setPrint() {
+    clear();
+    cout << "IMPOSTAZIONE SCHERMO\n\n";
+    for (int i = 1; i < 9; i++) {
+        cout << "0" << i << " xxxx ";
+        for (int j = 0; j < MAX_SQUARE_LENGTH - 2; j++)
+            cout << "-";
+        cout << ">|";
+    }
+    cout << "\n\nInserisci il numero di colonne intere presenti nella prima riga: ";
+    cin >> c;
+    clear();
 }

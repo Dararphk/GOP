@@ -6,7 +6,6 @@
 using namespace std;
 
 const int squareTypes = 6;
-const int MAX_STRING_LENGTH = 40;
 
 Square::Square(string msg, int pos) {
     this->msg = msg;
@@ -124,13 +123,6 @@ bool Square::checkLoop(Square *board[]) {
     return tmp;
 }
 
-string Square::print() {
-    string tmp = to_string(this->pos) + " - " + this->msg;
-    int max = MAX_STRING_LENGTH - tmp.length();
-
-    for (int i = 0; i < max; i++) {
-        tmp += " ";
-    }
-
-    return tmp;
+string Square::getMsg() {
+    return this->msg;
 }

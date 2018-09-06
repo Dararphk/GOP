@@ -15,5 +15,5 @@ public:
     Square(string msg, int pos);
     Square(int r_id, Square *board[], int pos, int l);
     bool activate(Player *p, Deck *d);
-    string print();
+    string getMsg();
 };
