@@ -120,7 +120,7 @@ void Game::print(Square *board[], int l) {
 
 void Game::setPrint() {
     clear();
-    cout << "IMPOSTAZIONE SCHERMO\n\n";
+    cout << "REGOLAZIONE LARGHEZZA SCHERMO\n\n";
     for (int i = 1; i < 9; i++) {
         cout << "0" << i << " xxxx ";
         for (int j = 0; j < MAX_SQUARE_LENGTH - 2; j++)
