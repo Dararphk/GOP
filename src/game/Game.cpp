@@ -19,8 +19,8 @@ const int MAX_SQUARE_LENGTH = 30;
 
 Game::Game() {
     srand(time(0));
-    setPrint();
     playerInput(MIN_PLAYERS, MAX_PLAYERS, initBoard(MIN_SQUARES, MAX_SQUARES));
+    setPrint();
     initDeck(MIN_CARDS, MAX_CARDS);
 
     //(!!!) eliminare controllo esterno ciclo
@@ -42,6 +42,8 @@ Game::Game() {
             cin.get();
         }
     }
+    clear();
+    print(board, l);
     cout << players[i]->getName() << " ha vinto. Congratulazioni!\n";
 }
 
@@ -63,11 +65,14 @@ void Game::playerInput(const int minp, const int maxp, int l) {
     } while (n < minp && n > maxp);
 
     string tmpName;
+    char tmpSym;
     for (int i = 0; i < n; i++) {
         cout << "Nome del giocatore " << i << ": ";
         cin >> tmpName;
+        cout << "Scegli un segnalino (un char a scelta): ";
+        cin >> tmpSym;
+        players[i] = new Player(tmpName, tmpSym, l);
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        players[i] = new Player(tmpName, l);
     }
 
 }
@@ -105,7 +110,8 @@ void Game::print(Square *board[], int l) {
             if (index < l) {
                 if (index < 10)
                     cout << " ";
-                cout << index << " - "; // (!!!) missing player print
+                cout << index << "|";
+                printPlayers(index); // (!!!) missing player print
                 tmp = board[i + rows * j]->getMsg();
                 max = MAX_SQUARE_LENGTH - tmp.length();
                 for (int k = 0; k < max; k++)
@@ -122,7 +128,10 @@ void Game::setPrint() {
     clear();
     cout << "REGOLAZIONE LARGHEZZA SCHERMO\n\n";
     for (int i = 1; i < 9; i++) {
-        cout << "0" << i << " xxxx ";
+        cout << "0" << i << " ";
+        for (int j = 0; j < n; j++)
+            cout << "x";
+        cout << " ";
         for (int j = 0; j < MAX_SQUARE_LENGTH - 2; j++)
             cout << "-";
         cout << ">|";
@@ -130,4 +139,15 @@ void Game::setPrint() {
     cout << "\n\nInserisci il numero di colonne intere presenti nella prima riga: ";
     cin >> c;
     clear();
+}
+
+void Game::printPlayers(int index) {
+    for (int i = 0; i < n; i++) {
+        if (players[i]->getPosition() == index) {
+            cout << players[i]->getSymbol();
+        } else {
+            cout << " ";
+        }
+    }
+    cout << "|";
 }

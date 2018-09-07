@@ -7,8 +7,9 @@
 
 using namespace std;
 
-Player::Player(string name, int l) {
+Player::Player(string name, char symbol, int l) {
     this->name = name;
+    this->symbol = symbol;
     this->setPosition(0);
     this->bounds = l;
     this->clearStats();
@@ -30,6 +31,9 @@ int Player::getPosition() {
 void Player::setPosition(int position) {
     cout << this->getName() << " si muove nella casella " << to_string(position) << endl;
     this->position = position;
+}
+char Player::getSymbol() {
+    return symbol;
 }
 
 int Player::move(int i) {

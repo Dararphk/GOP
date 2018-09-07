@@ -30,12 +30,13 @@ void Square::randomize(Square *board[], int l) {
         case 2:
             //(!!!) attenzione, possibili bug se si va indietro di 2 su casella di tipo domanda o con vai avanti di / vai nella casella se si chiude il ciclo, controllare prima di creare
             this->msg = "Vai ";
-
+            int l_r;
+            int r_r;
             do {
-                //(!!! correggere il range: cosa succede se i basso e rand alto?)
-                int l_r = rand() % 12 - 12; //left range
-                int r_r = rand() % 12 + 1; //right range
-                //correzione del range del random
+                //(!!!) correggere il range: cosa succede se i basso e rand alto?)
+                l_r = rand() % 12 - 12; //left range
+                r_r = rand() % 12 + 1; //right range
+                //(!!!) correzione del range del random
                 if (this->pos + l_r <= 0) {
                     l_r = - this->pos;
                 } else if (this->pos + r_r > l - 1) {
@@ -53,7 +54,7 @@ void Square::randomize(Square *board[], int l) {
             break;
         case 3:
             do {
-                this->val = (rand() % (l / 2)) + (l / 2);
+                this->val = (rand() % (l / 2)) + (l / 4);
             } while (this->val == this->pos || checkLoop(board));
             this->msg = "Vai alla casella " + to_string(val);
             break;
@@ -117,6 +118,10 @@ bool Square::checkLoop(Square *board[]) {
                 break;
             case 3:
                 if (board[index]->val == this->pos)
+                    tmp = true;
+                break;
+            case 5:
+                if (index + 2 == this->pos)
                     tmp = true;
                 break;
         }

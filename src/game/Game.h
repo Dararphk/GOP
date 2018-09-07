@@ -16,6 +16,7 @@ class Game {
     int initBoard(const int mins, const int maxs);
     void initDeck(const int minc, const int maxc);
     void setPrint();
+    void printPlayers(int index);
 public:
     Game();
     void print(Square *board[], int l);
