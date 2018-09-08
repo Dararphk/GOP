@@ -67,7 +67,7 @@ void Square::randomize(Square *board[], int l) {
     }
 }
 
-bool Square::activate(Player *p, Deck *d) {
+bool Square::activate(Player *p, Deck *d, Question *q) {
     bool tmp = false;
     switch (this->id) {
         case 0:
@@ -88,9 +88,6 @@ bool Square::activate(Player *p, Deck *d) {
             tmp = d->drawCard().activate(p);
             break;
         case 5:
-            //(!!!) attenzione, 1 messo come argomento solo per testing, ripristinare commento e cancellare riga sotto ad esso
-            //Question *q = new Question(rand());
-            Question *q = new Question(1);
             tmp = q->answer(p);
             break;
     }

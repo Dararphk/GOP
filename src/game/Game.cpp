@@ -23,10 +23,11 @@ Game::Game() {
     setPrint();
     initDeck(MIN_CARDS, MAX_CARDS);
 
-    //(!!!) eliminare controllo esterno ciclo
     bool gameFinished = false;
     int i = -1;
     int turni = 0;
+    Question questionGenerator = new Question();
+    
     while (!gameFinished) {
         clear();
         turni++;
@@ -53,7 +54,7 @@ void Game::gameLoop(Player *p) {
     //players[i] throws dice and advances, while finding out effect of the card
     p->throwDice();
     do {
-        sameTurn = board[p->getPosition()]->activate(p, deck);
+        sameTurn = board[p->getPosition()]->activate(p, deck, questionGenerator);
     } while (sameTurn);
 }
 
