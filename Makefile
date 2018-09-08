@@ -1,9 +1,11 @@
-GOP: main.o Card.o Deck.o Game.o Player.o Square.o Question.o
-	g++ -o GOP main.o Card.o Deck.o Game.o Player.o Square.o Question.o
+GOP: main.o Card.o Color.o Deck.o Game.o Player.o Square.o Question.o
+	g++ -o GOP main.o Card.o Color.o Deck.o Game.o Player.o Square.o Question.o
 main.o: main.cpp
 	g++ -c main.cpp
 Card.o: src/card/Card.cpp
 	g++ -c src/card/Card.cpp
+Color.o: src/color/Color.cpp
+	g++ -c src/color/Color.cpp
 Deck.o: src/deck/Deck.cpp
 	g++ -c src/deck/Deck.cpp
 Game.o: src/game/Game.cpp

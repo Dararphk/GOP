@@ -25,13 +25,3 @@ Card Deck::drawCard() {
     index = index->next;
     return *(index->card);
 }
-
-/*
-void drawnCard(Player *p, int f){
-    cards[f]->activate(p);
-    for (; f < n-1; f++) {
-        cards[f] = cards[f+1];
-    }
-    n--;
-}
-*/

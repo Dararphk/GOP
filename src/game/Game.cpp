@@ -15,7 +15,7 @@ const int MIN_SQUARES = 40;
 const int MAX_SQUARES = 100;
 const int MIN_CARDS = 40;
 const int MAX_CARDS = 100;
-const int MAX_SQUARE_LENGTH = 30;
+const int MAX_SQUARE_LENGTH = 40;
 
 Game::Game() {
     srand(time(0));
@@ -26,8 +26,7 @@ Game::Game() {
     bool gameFinished = false;
     int i = -1;
     int turni = 0;
-    Question questionGenerator = new Question();
-    
+
     while (!gameFinished) {
         clear();
         turni++;
@@ -54,7 +53,7 @@ void Game::gameLoop(Player *p) {
     //players[i] throws dice and advances, while finding out effect of the card
     p->throwDice();
     do {
-        sameTurn = board[p->getPosition()]->activate(p, deck, questionGenerator);
+        sameTurn = board[p->getPosition()]->activate(p, deck);
     } while (sameTurn);
 }
 
@@ -68,7 +67,7 @@ void Game::playerInput(const int minp, const int maxp, int l) {
     string tmpName;
     char tmpSym;
     for (int i = 0; i < n; i++) {
-        cout << "Nome del giocatore " << i << ": ";
+        cout << "Nome del giocatore " << i + 1 << ": ";
         cin >> tmpName;
         cout << "Scegli un segnalino (un char a scelta): ";
         cin >> tmpSym;
@@ -111,8 +110,9 @@ void Game::print(Square *board[], int l) {
             if (index < l) {
                 if (index < 10)
                     cout << " ";
-                cout << index << "|";
+                cout << index << Color::getColor(2) << "|" << Color::resetColor();
                 printPlayers(index); // (!!!) missing player print
+                cout << Color::getColor(2) << "|" << Color::resetColor();
                 tmp = board[i + rows * j]->getMsg();
                 max = MAX_SQUARE_LENGTH - tmp.length();
                 for (int k = 0; k < max; k++)
@@ -133,7 +133,7 @@ void Game::setPrint() {
         for (int j = 0; j < n; j++)
             cout << "x";
         cout << " ";
-        for (int j = 0; j < MAX_SQUARE_LENGTH - 2; j++)
+        for (int j = 0; j < MAX_SQUARE_LENGTH - 2 - (Color::getColor(0).length() + Color::resetColor().length()); j++)
             cout << "-";
         cout << ">|";
     }
@@ -150,5 +150,4 @@ void Game::printPlayers(int index) {
             cout << " ";
         }
     }
-    cout << "|";
 }

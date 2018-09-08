@@ -29,7 +29,7 @@ int Player::getPosition() {
 }
 
 void Player::setPosition(int position) {
-    cout << this->getName() << " si muove nella casella " << to_string(position) << endl;
+    cout << this->getName() << " si muove nella casella " << to_string(position) << endl << endl; //(!!!)
     this->position = position;
 }
 char Player::getSymbol() {
