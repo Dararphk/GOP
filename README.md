@@ -52,10 +52,10 @@ Avviato l'eseguibile si inserirà il numero di giocatori, compreso tra 1 e 4 inc
 specificare il nome e il carattere che si intende usare come pedina per ogni giocatore.
 Ad ogni turno viene stampato il tabellone con ogni casella formata da
 
-	* **Numero** (Crescente da start a finish).
-	* Eventuale **pedina** (Se un giocatore è nella sudddetta casella).
-	* Descrizione dell'**effetto** della casella.
-	* Il **colore** della descrizione varia in base al tipo di casella
+* **Numero** (Crescente da start a finish).
+* Eventuale **pedina** (Se un giocatore è nella sudddetta casella).
+* Descrizione dell'**effetto** della casella.
+* Il **colore** della descrizione varia in base al tipo di casella
 
 Per avanzare nel gioco è sufficiente premere invio alla fine di ogni turno, ogni volta il gioco stampa a video il punteggio ottenuto con i dadi e l'effetto
 della casella su cui il giocatore si è fermato.
