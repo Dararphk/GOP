@@ -50,7 +50,7 @@ make
 
 Avviato l'eseguibile si inserirà il numero di giocatori, compreso tra 1 e 4 inclusi. Successivamente bisogna
 specificare il nome e il carattere che si intende usare come pedina per ogni giocatore.
-Ad ogni turno viene stampato il tabellone con ogni casella formata da:
+Ad ogni turno viene stampato il tabellone con ogni casella formata da
 
 	* <b>Numero</b> (Crescente da start a finish).
 	* Eventuale <b>pedina</b> (Se un giocatore è nella sudddetta casella).
