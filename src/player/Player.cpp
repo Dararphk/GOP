@@ -29,7 +29,7 @@ int Player::getPosition() {
 }
 
 void Player::setPosition(int position) {
-    cout << this->getName() << " si muove nella casella " << to_string(position) << endl << endl; //(!!!)
+    cout << this->getName() << " si muove nella casella " << to_string(position) << endl << endl;
     this->position = position;
 }
 char Player::getSymbol() {
@@ -47,7 +47,6 @@ int Player::move(int i) {
 }
 
 int Player::throwDice() {
-    //(!!!) put output messagge
     int tmp;
     cout << this->getName() << " tira ";
     int dice = (rand() % 6 + 1) + (rand() % 6 + 1);

@@ -30,7 +30,6 @@ Game::Game() {
     while (!gameFinished) {
         clear();
         turni++;
-        //(!!!) correggere con versione migliore
         cout << "Turno numero: " + to_string(turni) << endl << endl;
         i++;
         if (i >= n)
@@ -50,7 +49,6 @@ Game::Game() {
 void Game::gameLoop(Player *p) {
     bool sameTurn;
     this->print(board, l);
-    //players[i] throws dice and advances, while finding out effect of the card
     p->throwDice();
     do {
         sameTurn = board[p->getPosition()]->activate(p, deck);
@@ -111,7 +109,7 @@ void Game::print(Square *board[], int l) {
                 if (index < 10)
                     cout << " ";
                 cout << index << Color::getColor(2) << "|" << Color::resetColor();
-                printPlayers(index); // (!!!) missing player print
+                printPlayers(index);
                 cout << Color::getColor(2) << "|" << Color::resetColor();
                 tmp = board[i + rows * j]->getMsg();
                 max = MAX_SQUARE_LENGTH - tmp.length();

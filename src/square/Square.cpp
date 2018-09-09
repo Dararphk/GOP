@@ -29,15 +29,12 @@ void Square::randomize(Square *board[], int l) {
             this->msg += "Tira un'altra volta";
             break;
         case 2:
-            //(!!!) attenzione, possibili bug se si va indietro di 2 su casella di tipo domanda o con vai avanti di / vai nella casella se si chiude il ciclo, controllare prima di creare
             this->msg += "Vai ";
             int l_r;
             int r_r;
             do {
-                //(!!!) correggere il range: cosa succede se i basso e rand alto?)
                 l_r = rand() % 12 - 12; //left range
                 r_r = rand() % 12 + 1; //right range
-                //(!!!) correzione del range del random
                 if (this->pos + l_r <= 0) {
                     l_r = - this->pos;
                 } else if (this->pos + r_r > l - 1) {

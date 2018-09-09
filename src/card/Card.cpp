@@ -13,7 +13,7 @@ Card::Card(string s) {
         this->id = 7;
     else
         this->id = 6;
-    this->randomize(); //(!!!) last card didn't get name and desc
+    this->randomize();
 }
 
 Card::Card(int r_id) {
