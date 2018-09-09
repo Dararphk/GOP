@@ -1,4 +1,4 @@
-# GOP (Gioco dell'Oca Pazza)
+﻿# GOP (Gioco dell'Oca Pazza)
 
 Versione console del gioco dell'oca, leggermente rivisto, implementata con C++.
 
@@ -49,7 +49,7 @@ make
 ## Come Giocare
 
 Avviato l'eseguibile si inserirà il numero di giocatori, compreso tra 1 e 4 inclusi. Successivamente bisogna
-specificare il nome e il carattere che si intende usare come pedina per ogni giocatore. <br>
+specificare il nome e il carattere che si intende usare come pedina per ogni giocatore.
 Ad ogni turno viene stampato il tabellone con ogni casella formata da:
 
 	* <b>Numero</b> (Crescente da start a finish).
@@ -58,7 +58,7 @@ Ad ogni turno viene stampato il tabellone con ogni casella formata da:
 	* Il <b>colore</b> della descrizione varia in base al tipo di casella
 
 Per avanzare nel gioco è sufficiente premere invio alla fine di ogni turno, ogni volta il gioco stampa a video il punteggio ottenuto con i dadi e l'effetto
-della casella su cui il giocatore si è fermato.<br>
+della casella su cui il giocatore si è fermato.
 
 ## Membri che hanno contribuito al progetto GOP
 
