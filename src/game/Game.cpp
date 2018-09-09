@@ -44,7 +44,7 @@ Game::Game() {
     }
     clear();
     print(board, l);
-    cout << players[i]->getName() << " ha vinto. Congratulazioni!\n";
+    cout << players[i]->getName() << " ha vinto in "<< turni <<" turni. Congratulazioni!\n";
 }
 
 void Game::gameLoop(Player *p) {
@@ -139,6 +139,7 @@ void Game::setPrint() {
     }
     cout << "\n\nInserisci il numero di colonne intere presenti nella prima riga: ";
     cin >> c;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     clear();
 }
 
