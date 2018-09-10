@@ -12,7 +12,7 @@ Per la gestione grafica abbiamo manipolato i colori del testo del terminale, fac
 
 ### Tema
 
-(!!!)
+Carte e domande seguono il noto gioco di ruolo Dark Souls.
 
 ### Caratteristiche
 
@@ -66,8 +66,14 @@ Di seguito una breve descrizione di tutti i vari oggetti sviluppati per il proge
 * Tramite il metodo `activate(Player *p)` l'effetto della carta avrà effetto sul giocatore che l'ha pescata.
 
 ##### Deck - **Mazzo**
-* La struttura mazzo è una pila, dato che inizializza una prima carta (nodo) e poi vi aggiunge altre carte con `addCard(int r_id)`, quindi l'ultima carta aggiunta sarà la prima pescata dal metodo `drawCard()`.
+* La struttura principale della classe mazzo è una pila, dato che inizializza una prima carta (nodo) e poi vi aggiunge altre carte con `addCard(int r_id)`, quindi l'ultima carta aggiunta sarà la prima pescata dal metodo `drawCard()`.
 * Il costruttore inizializza solo il primo nodo, ovvero quello che contiene la carta che mette fine alla partita.
+
+##### Square - **Casella**
+* Contiene i parametri "id", "pos" (int) e "msg" (string).
+* Il metodo costruttore decide il tipo di casella e invoca `randomize()` per generare i valori casuali.
+* Il metodo `checkLoop()` evita la creazione di caselle con valori che permetterebbero cicli infiniti.
+
 
 ##### Game - **Gioco**
 * Contiene i parametri "n_colonne", "n_giocatori", "lunghezza_board" (int), due array di puntatori (rispettivamente per i giocatori e per il tabellone) e un puntatore al mazzo di carte.
