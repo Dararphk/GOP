@@ -1,0 +1,10 @@
+##### Card - **Carta**
+##### Color - **Colore**
+##### Deck - **Mazzo**
+##### Game - **Gioco**
+* Contiene i parametri "n_colonne", "n_giocatori", "lunghezza_board" (int), due array di puntatori (rispettivamente per i giocatori e per il tabellone) e un puntatore al mazzo di carte.
+* E' possibile modificare a piacere il valore delle costanti dichiarate a inizio classe per alterare l'inizializzazione del gioco.
+* Il costruttore richiama tutte le funzioni utili all'inizializzazione delle principali strutture dati del gioco.
+* Il metodo gameLoop continua il turno del giocatore fino a quando si concatenano gli effetti su di esso.
+* Il metodo `setPrint()` permette di visualizzare in anteprima quante colonne ci stanno nello schermo.
+##### Square - **Casella**
