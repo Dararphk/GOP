@@ -14,7 +14,7 @@ const int MAX_PLAYERS = 4;
 const int MIN_SQUARES = 40;
 const int MAX_SQUARES = 100;
 const int MIN_CARDS = 40;
-const int MAX_CARDS = 100;
+const int MAX_CARDS = 50;
 const int MAX_SQUARE_LENGTH = 40;
 
 Game::Game() {
