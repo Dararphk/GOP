@@ -41,7 +41,7 @@ Le domande, danno 4 possibili opzioni come risposta, se il giocatore indovina av
 Sono organizzate in un array di strutture (struct) "questions", tramite un intero randomico verrà estratta la domanda a cui il giocatore dovrà rispondere.
 Per creare l'array abbiamo usato un template preimpostato da noi (presente nella cartella `src/question`) in modo che aggiungere domande, o addirittura cambiarle, sia un'operazione veloce.
 Aprendo il file con Excel, o corrispettivo FOSS (es. LibreOffice Calc), è possibile copiare e incollare le righe presenti n volte per creare l'elenco personalizzato di n domande.  
-Prima di andare a inserire l'elenco nella classe Question.cpp è necessario formattare il testo eliminando le tabulature create dalla copia delle celle e sostituendo con delle tabulature il simbolo `#t`.
+Prima di andare a inserire l'elenco nella classe Question.cpp è necessario formattare il testo eliminando le tabulazioni create dalla copia delle celle e sostituendo con delle tabulazioni il simbolo `#t`.
 Usando un editor come vim è possibile digitare i seguenti comandi dopo aver incollato la selezione:
 ```vim
 :%s/\t//g
