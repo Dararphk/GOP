@@ -12,6 +12,7 @@ struct entry {
     int _correctAnswer;
 };
 
+//insert comment outside /* "entry questions[] = {...} */" to add custom questions
 entry questions[] = {
 {
 	"Chi è il primogenito di Lord Gwyn?",

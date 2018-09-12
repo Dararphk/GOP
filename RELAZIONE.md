@@ -40,8 +40,14 @@ Per lo sviluppo di questo progetto abbiamo usato la libreria **string**, che for
 Le domande, danno 4 possibili opzioni come risposta, se il giocatore indovina avanza di 2 caselle, in caso contrario rimane sulla casella della domanda.
 Sono organizzate in un array di strutture (struct) "questions", tramite un intero randomico verrà estratta la domanda a cui il giocatore dovrà rispondere.
 Per creare l'array abbiamo usato un template preimpostato da noi (presente nella cartella "question") in modo che aggiungere domande, o addirittura cambiarle, sia un'operazione veloce.
-
-(!!! VIM)
+Aprendo il file con Excel, o corrispettivo FOSS (es. LibreOffice Calc), è possibile copiare e incollare le righe presenti n volte per creare l'elenco personalizzato di n domande.  
+Prima di andare a inserire l'elenco nella classe Question.cpp è necessario formattare il testo eliminando le tabulature create dalla copia delle celle e sostituendo con delle tabulature il simbolo `#t`.
+Usando un editor come vim è possibile digitare i seguenti comandi dopo aver incollato la selezione:
+```vim
+:%s/\t//g
+:%s/#t/\t/g
+```
+A questo punto il testo formattato è pronto per essere incollato a riga 15, dopo aver seguito le istruzioni del commento.
 
 ### Programmazione ad oggetti
 
