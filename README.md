@@ -44,14 +44,14 @@ make
 ## Come Giocare
 
 Avviato l'eseguibile viene richiesto il numero di giocatori, compreso tra 1 e 4 inclusi. Successivamente bisogna specificare il nome e il carattere che si intende usare come pedina per ogni giocatore.
-Segue una schermata di regolazione manuale della larghezza dello schermo (si va a scegliere il numero di colonne con cui il tabellone verrà formattato)
-Ad ogni turno viene stampato il tabellone con ogni casella formata da
+Segue una schermata di regolazione manuale della larghezza dello schermo (si va a scegliere il numero di colonne con cui il tabellone verrà formattato).
+Ad ogni turno viene stampato il tabellone, con ogni casella formata da:
 
-* **Numero** (Crescente da start a finish).
-* Eventuale **pedina** (Se un giocatore è nella sudddetta casella).
+* **Numero** (crescente da start a finish).
+* Eventuale **pedina** (se un giocatore è nella sudddetta casella).
 * **Descrizione** della casella (il **colore** varia in base al tipo).
 
-Le uniche interazioni necessarie per avanzare nel gioco sono rispondere alle domande e premere invio alla fine di ogni turno.
+Le uniche interazioni necessarie per avanzare nel gioco sono: 1) rispondere alle domande e 2) premere invio alla fine di ogni turno.
 Sotto al tabellone viene stampata la cronologia degli spostamenti del giocatore.
 
 ## Membri che hanno contribuito al progetto GOP
