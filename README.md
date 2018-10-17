@@ -48,7 +48,7 @@ Segue una schermata di regolazione manuale della larghezza dello schermo (si va 
 Ad ogni turno viene stampato il tabellone, con ogni casella formata da:
 
 * **Numero** (crescente da start a finish).
-* Eventuale **pedina** (se un giocatore è nella sudddetta casella).
+* Eventuale **pedina** (se un giocatore è nella suddetta casella).
 * **Descrizione** della casella (il **colore** varia in base al tipo).
 
 Le uniche interazioni necessarie per avanzare nel gioco sono: 1) rispondere alle domande e 2) premere invio alla fine di ogni turno.
